@@ -1,0 +1,106 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image:linear-gradient(black,white,skyblue)
+        }
+        
+
+        .main {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 20px 20px 30px black;
+            padding: 20px;
+            flex-direction: column;
+            background-color: white;
+            border-radius: 10px;
+            gap: 5px;
+        }
+
+        p {
+            font-size: 34px;
+            font-weight: bold;
+            text-decoration:dashed
+        }
+
+        label {
+            font-size: 18px;
+        }
+
+        .btn {
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid double;
+        }
+
+        .dwn {
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .btn, .dwn {
+            background-color: blue;
+            color: white;
+        }
+
+            .btn:hover, .dwn:hover {
+                background-color: black;
+                color: white;
+                border-radius: 15px 0px 15px 0px;
+            }
+
+        img {
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            box-shadow: 20px 20px 30px 0px lightpink;
+            image-resolution:4000dpi;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        @model qrcode.Models.Class122
+        @using (Html.BeginForm())
+        {
+            <div class="main">
+                <p>QR Code Generator</p>
+                @Html.Label("Enter the url ")
+                @Html.TextBoxFor(model => model.Qrcodetext, new { size = 210, style = "width:210px; height:30px;" })
+                <br />
+                <br />
+                <input type="submit" value="Generate Qr code" class="btn" />
+                @* Image display code *@
+                <div>
+                    <img height="250" width="250" src="@Model.Qrimageurl" />
+                </div><br />
+                <a href="@Model.Qrimageurl" download>
+                    <button type="button" class="dwn">Download</button>
+                </a><br />
+            </div>
+        }
+    </div><br /><br />
+    
+</body>
+</html>
